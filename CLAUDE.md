@@ -129,7 +129,7 @@ is `hackka`. `app.json` enables `typedRoutes` and `reactCompiler` (auto-memoises
 - **UI kit** (`src/components/ui/`): `AppText` (`variant`+`color`), `Screen`, `Card`, `Button`,
   `Pill`, `VerifiedBadge`, `TopBar`, `IconButton`, `SectionHeader`, `ProgressBar`/`Dots`,
   `Monogram`, `AmountSlider`, `Icon` (Ionicons via `@expo/vector-icons`). Plus `src/components/*`
-  (`ProjectCard`, `AgentFab`, `MosaicMark`). Build screens from these.
+  (`ProjectCard`, `AgentFab`, and the brand mark `impact-fund-logo.tsx`). Build screens from these.
 - **Theme hooks** (`src/hooks/use-theme.ts`): `useTheme()` (active palette), `useScheme()`
   ('light'|'dark'); `use-color-scheme.web.ts` recomputes after hydration for static web rendering.
 
@@ -172,8 +172,11 @@ tiny custom system (`src/i18n/`):
   the earlier "keep the German *Gedankenstrich*" rule on the owner's explicit call. When adding copy,
   use a comma/colon/period instead of a dash so the app stays dash-free. The deliberate „nicht X,
   sondern Y" brand antithesis stays — only the dash character is banned, not the rhetorical move.
-- The launcher icon art (`assets/images/`) is still the default Expo blue chevron — not yet
-  rebranded to navy/green. A new icon is a separate asset task.
+- The launcher icon, splash, and favicon (`assets/images/`) are the ImpactFund mark on navy,
+  generated from the logo geometry via `rsvg-convert` (source SVGs in
+  `design_handoff_impactfund_logo/`). To regenerate, re-run that conversion, don't hand-edit the
+  PNGs. Note: `assets/expo.icon/` is the now-unused old Expo Icon-Composer bundle (the `ios.icon`
+  app.json key was removed so iOS falls back to the shared `icon.png`).
 
 ## Conventions
 
