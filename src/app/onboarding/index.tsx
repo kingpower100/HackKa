@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
-import { MosaicMark } from '@/components/mosaic-mark';
+import { ImpactFundMark, ImpactFundWordmark } from '@/components/impact-fund-logo';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { AppText } from '@/components/ui/text';
@@ -25,13 +25,11 @@ export default function Welcome() {
       }>
       <View style={styles.body}>
         <Animated.View entering={FadeIn.duration(600)}>
-          <MosaicMark size={140} />
+          <ImpactFundMark size={96} />
         </Animated.View>
 
         <Animated.View entering={FadeInDown.delay(500).duration(600)} style={styles.copy}>
-          <AppText variant="label" color="brandInk" center style={{ marginBottom: Spacing.md }}>
-            Mosaik
-          </AppText>
+          <ImpactFundWordmark size={30} style={{ marginBottom: Spacing.lg }} />
           <AppText variant="display" center>
             {tr({ de: 'Wirkung beginnt', en: 'Impact begins' })}{'\n'}{tr({ de: 'mit einer Frage:', en: 'with a question:' })}
           </AppText>
@@ -40,8 +38,8 @@ export default function Welcome() {
           </AppText>
           <AppText variant="body" color="inkSecondary" center style={styles.sub}>
             {tr({
-              de: 'Mosaik ist kein Spendenkonto. Es ist der Ort, an dem du entdeckst, wofür du stehst, und siehst, was dein Geld wirklich bewegt.',
-              en: 'Mosaik is not a donation account. It is the place where you discover what you stand for, and see what your money truly moves.',
+              de: 'ImpactFund ist kein Spendenkonto. Es ist der Ort, an dem du entdeckst, wofür du stehst, und siehst, was dein Geld wirklich bewegt.',
+              en: 'ImpactFund is not a donation account. It is the place where you discover what you stand for, and see what your money truly moves.',
             })}
           </AppText>
         </Animated.View>

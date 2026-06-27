@@ -1,5 +1,5 @@
 /**
- * Mosaik: Design System (v2)
+ * ImpactFund: Design System (v2)
  *
  * A calm, premium, grown-up language anchored on the real LBBW brand colours,
  * pulled from lbbw.de: deep navy #123250 (structure, ink, weight) and the

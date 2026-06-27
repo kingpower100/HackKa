@@ -16,7 +16,7 @@ export function VerifiedBadge({ compact }: { compact?: boolean }) {
       <AppText variant="caption" style={{ color: theme.brandInk, fontWeight: '700' }}>
         {compact
           ? tr({ de: 'Verifiziert', en: 'Verified' })
-          : tr({ de: 'Verifiziert von Mosaik', en: 'Verified by Mosaik' })}
+          : tr({ de: 'Verifiziert von ImpactFund', en: 'Verified by ImpactFund' })}
       </AppText>
     </View>
   );

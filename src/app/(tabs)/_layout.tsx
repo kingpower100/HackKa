@@ -20,7 +20,7 @@ const TABS: Record<string, { label: Localized; icon: IconName; active: IconName 
 
 export default function TabsLayout() {
   return (
-    <Tabs screenOptions={{ headerShown: false }} tabBar={(props) => <MosaikTabBar {...props} />}>
+    <Tabs screenOptions={{ headerShown: false }} tabBar={(props) => <AppTabBar {...props} />}>
       <Tabs.Screen name="home" />
       <Tabs.Screen name="discover" />
       <Tabs.Screen name="mission" />
@@ -29,7 +29,7 @@ export default function TabsLayout() {
   );
 }
 
-function MosaikTabBar({ state, navigation }: BottomTabBarProps) {
+function AppTabBar({ state, navigation }: BottomTabBarProps) {
   const theme = useTheme();
   const scheme = useScheme();
   const tr = useTr();

@@ -31,8 +31,8 @@ export function buildMoneyJourney(state: State, lang: Lang): JourneyStep[] {
       title: tr({ de: 'Überwiesen', en: 'Transferred' }, lang),
       desc: tr(
         {
-          de: 'Dein Beitrag hat dein Konto verlassen und ist bei Mosaik eingegangen.',
-          en: 'Your contribution left your account and arrived at Mosaik.',
+          de: 'Dein Beitrag hat dein Konto verlassen und ist bei ImpactFund eingegangen.',
+          en: 'Your contribution left your account and arrived at ImpactFund.',
         },
         lang
       ),

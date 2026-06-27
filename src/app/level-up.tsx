@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
-import { MosaicMark } from '@/components/mosaic-mark';
+import { ImpactFundMark } from '@/components/impact-fund-logo';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { AppText } from '@/components/ui/text';
@@ -23,7 +23,7 @@ export default function LevelUp() {
       <StatusBar style="light" />
       <View style={styles.body}>
         <Animated.View entering={FadeInDown.duration(600)}>
-          <MosaicMark size={120} />
+          <ImpactFundMark size={96} variant="onDark" />
         </Animated.View>
 
         <Animated.View entering={FadeInDown.delay(300).duration(600)} style={{ alignItems: 'center' }}>

@@ -37,7 +37,8 @@ clean.
 
 ## Product
 
-**Mosaik** — a premium, German-language **impact / giving app**, visually branded to **LBBW /
+**ImpactFund** (renamed from „Mosaik" 2026-06-27 — `app.json` `name`, all user-facing copy, and
+the brand mark) — a premium, German-language **impact / giving app**, visually branded to **LBBW /
 BW-Bank**. It must **never feel like a bank** and never use the word "Stiftung". It's an
 *identity* product, not a donation app: users discover who they are as an impact person, see
 tangible results, and grow their engagement over time. **All UI copy is German.** Payments and
@@ -55,6 +56,19 @@ a bank* rule. Founding one always requires a **budget** (`name-mission.tsx` sets
 when not yet onboarded, calls `confirmGive`). Internals keep the old names: the route is
 `name-mission`, the tab/route key is `mission`, the state field is `fundName`. The bottom-tab label
 is shortened to **„Fonds" / „Fund"** so it fits one line. „Stiftung" is still forbidden.
+> Note the (deliberate) overlap: the **app** is branded **„ImpactFund"** (one word, the wordmark),
+> while the in-app giving **vehicle** stays **„Impact-Fonds" / „Impact Fund"** (with a space). Both
+> are owner-chosen; don't merge them.
+
+**Brand mark:** the logo is an abstract lowercase „i" (Direction 03 „Signal") — a navy **bar**
+(the foundation) under a green **dot** (the person + their impact). It lives in
+`src/components/impact-fund-logo.tsx`: `ImpactFundMark` (symbol), `ImpactFundWordmark` (Impact
+ExtraBold + Fund Medium), and `ImpactFundLogo` (lockup). The mark uses **FIXED** brand hexes
+(navy `#123250`, green `#37C391`, light `#EAF2F1`) — it does *not* follow the light/dark theme;
+pick a `variant` (`primary`/`onDark`/`mono`/`negative`) for the surface instead. It's drawn with
+plain Views (two shapes), so **no `react-native-svg` dependency** is needed. The app icon, splash,
+and favicon are generated from the same geometry (`assets/images/`); the source SVGs and the full
+spec live in `design_handoff_impactfund_logo/` (excluded from `tsc`).
 
 ## Design language (the heart of the app)
 

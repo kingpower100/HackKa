@@ -71,7 +71,7 @@ export default function Advisor() {
           </AppText>
           <AppText variant="subtitle">Maria Berger</AppText>
           <AppText variant="small" color="inkSecondary">
-            {tr({ de: 'Mosaik Impact-Begleitung', en: 'Mosaik impact guide' })}
+            {tr({ de: 'ImpactFund Begleitung', en: 'ImpactFund guide' })}
           </AppText>
         </View>
       </View>
