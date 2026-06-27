@@ -10,7 +10,7 @@ import type { Lang } from '@/i18n/types';
 
 /* ------------------------------------------------------------------ types */
 
-export type Contribution = { type: 'monthly' | 'oneoff'; amount: number; roundup: boolean };
+export type Contribution = { type: 'monthly' | 'oneoff'; amount: number };
 export type Allocation = { projectId: string; share: number }; // share in percent
 export type CircleMember = {
   id: string;

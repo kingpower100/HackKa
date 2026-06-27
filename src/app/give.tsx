@@ -1,6 +1,6 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Switch, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { AmountSlider } from '@/components/ui/amount-slider';
@@ -129,7 +129,6 @@ function EditContribution() {
   const lang = useLanguage();
   const { state, setContribution } = useStore();
   const [amount, setAmount] = useState(state.contribution?.amount ?? 50);
-  const [roundup, setRoundup] = useState(state.contribution?.roundup ?? false);
   const type = state.contribution?.type ?? 'monthly';
 
   return (
@@ -138,7 +137,7 @@ function EditContribution() {
         <Button
           title={tr({ de: 'Speichern', en: 'Save' })}
           onPress={() => {
-            setContribution({ type, amount, roundup });
+            setContribution({ type, amount });
             router.back();
           }}
         />
@@ -154,19 +153,6 @@ function EditContribution() {
         <View style={{ marginTop: Spacing.lg }}>
           <AmountSlider value={amount} min={10} max={1000} step={10} onChange={setAmount} />
         </View>
-      </Card>
-
-      <Card style={styles.roundup}>
-        <View style={{ flex: 1 }}>
-          <AppText variant="bodyStrong">{tr({ de: 'Alltagskäufe aufrunden', en: 'Round up everyday purchases' })}</AppText>
-          <AppText variant="small" color="inkSecondary" style={{ marginTop: 4 }}>
-            {tr({
-              de: 'Die Differenz fließt zusätzlich in deinen Topf.',
-              en: 'The difference flows into your fund on top.',
-            })}
-          </AppText>
-        </View>
-        <Switch value={roundup} onValueChange={setRoundup} trackColor={{ true: theme.brand, false: theme.lineStrong }} thumbColor="#fff" />
       </Card>
 
       <View style={styles.reassure}>
@@ -187,6 +173,5 @@ const styles = StyleSheet.create({
   preview: { flexDirection: 'row', gap: Spacing.md, alignItems: 'center', marginTop: Spacing.lg },
   success: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   seal: { width: 72, height: 72, borderRadius: 36, alignItems: 'center', justifyContent: 'center' },
-  roundup: { flexDirection: 'row', alignItems: 'center', gap: Spacing.md, marginTop: Spacing.lg },
   reassure: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, justifyContent: 'center', marginTop: Spacing.lg },
 });

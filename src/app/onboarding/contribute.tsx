@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Switch, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { AmountSlider } from '@/components/ui/amount-slider';
@@ -36,13 +36,12 @@ export default function Contribute() {
 
   const [mode, setMode] = useState<Mode>('oneoff');
   const [amounts, setAmounts] = useState<Record<Mode, number>>({ monthly: 50, oneoff: 50000 });
-  const [roundup, setRoundup] = useState(false);
 
   const amount = amounts[mode];
   const range = RANGE[mode];
 
   function proceed() {
-    setContribution({ type: mode, amount, roundup });
+    setContribution({ type: mode, amount });
     router.push('/onboarding/projects');
   }
 
@@ -153,30 +152,6 @@ export default function Contribute() {
         </Card>
       </Animated.View>
 
-      {/* Round-up, dezent */}
-      <Card style={styles.roundup}>
-        <View style={{ flex: 1 }}>
-          <View style={styles.roundHead}>
-            <Icon name="ellipsis-horizontal-circle-outline" size={18} color={theme.inkSecondary} />
-            <AppText variant="bodyStrong">
-              {tr({ de: 'Alltagskäufe aufrunden', en: 'Round up everyday purchases' })}
-            </AppText>
-          </View>
-          <AppText variant="small" color="inkSecondary" style={{ marginTop: 4 }}>
-            {tr({
-              de: 'Runde Zahlungen auf den nächsten Euro. Die Differenz fließt in deinen Topf, meist 3-5 € im Monat.',
-              en: 'Round payments up to the nearest euro. The difference flows into your pot, usually €3-5 a month.',
-            })}
-          </AppText>
-        </View>
-        <Switch
-          value={roundup}
-          onValueChange={setRoundup}
-          trackColor={{ true: theme.brand, false: theme.lineStrong }}
-          thumbColor="#fff"
-        />
-      </Card>
-
       <View style={styles.reassure}>
         <Icon name="lock-open-outline" size={15} color={theme.inkTertiary} />
         <AppText variant="caption" color="inkTertiary">
@@ -203,7 +178,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   note: { flexDirection: 'row', gap: Spacing.md, alignItems: 'flex-start', marginTop: Spacing.lg },
-  roundup: { flexDirection: 'row', alignItems: 'center', gap: Spacing.md, marginTop: Spacing.md },
-  roundHead: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm },
   reassure: { flexDirection: 'row', alignItems: 'center', gap: Spacing.sm, justifyContent: 'center', marginTop: Spacing.lg },
 });

@@ -105,17 +105,6 @@ export default function Profile() {
           />
           <Divider />
           <Row
-            icon="ellipsis-horizontal-circle-outline"
-            title={tr({ de: 'Aufrunden', en: 'Round up' })}
-            value={
-              state.contribution?.roundup
-                ? tr({ de: 'An', en: 'On' })
-                : tr({ de: 'Aus', en: 'Off' })
-            }
-            onPress={() => router.push('/give')}
-          />
-          <Divider />
-          <Row
             icon="document-text-outline"
             title={tr({ de: 'Spendenbescheinigung', en: 'Donation receipt' })}
             value={tr({ de: 'Jährlich', en: 'Yearly' })}

@@ -73,7 +73,7 @@ export default function NameMission() {
 
   function found() {
     if (!valid) return;
-    setContribution({ type: mode, amount, roundup: state.contribution?.roundup ?? false });
+    setContribution({ type: mode, amount });
     nameFund(name.trim());
     // Ein Impact-Fonds braucht Geld: ist noch nichts committet, schließen wir das
     // Onboarding hier mit dem festgelegten Budget ab (kein Doppel-Abbuchen, wenn

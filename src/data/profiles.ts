@@ -159,11 +159,15 @@ export function deriveProfile(
 ): { topThemes: CategoryKey[]; archetype: Archetype; scope: Scope | null } {
   const { themes, arch } = scoreQuiz(questions, answers);
 
-  const topThemes = (Object.entries(themes) as [CategoryKey, number][])
-    .filter(([, v]) => v > 0)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(([k]) => k);
+  // Die Themen kommen AUSSCHLIESSLICH aus der expliziten Wahl in Frage 2
+  // ('themes'). Die übrigen Fragen steuern nur Archetyp und Reichweite, sie
+  // dürfen keine Themen hinzufügen, die der Mensch bewusst nicht gewählt hat.
+  // Wer dort nur „Sport" wählt, bekommt auch nur Sport, kein Umwelt o.ä.
+  // (Die Option-IDs dieser Frage sind exakt die CategoryKeys.)
+  const picked = (answers['themes'] ?? []) as CategoryKey[];
+  const topThemes = picked
+    .filter((k) => k in themes)
+    .sort((a, b) => themes[b] - themes[a]);
 
   const archKey = (Object.entries(arch) as [ArchetypeKey, number][]).sort(
     (a, b) => b[1] - a[1]

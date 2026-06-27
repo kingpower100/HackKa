@@ -36,12 +36,6 @@ export default function Welcome() {
           <AppText variant="displaySm" color="inkSecondary" center style={{ marginTop: Spacing.sm }}>
             {tr({ de: 'Wer willst du sein?', en: 'Who do you want to be?' })}
           </AppText>
-          <AppText variant="body" color="inkSecondary" center style={styles.sub}>
-            {tr({
-              de: 'ImpactFund ist kein Spendenkonto. Es ist der Ort, an dem du entdeckst, wofür du stehst, und siehst, was dein Geld wirklich bewegt.',
-              en: 'ImpactFund is not a donation account. It is the place where you discover what you stand for, and see what your money truly moves.',
-            })}
-          </AppText>
         </Animated.View>
       </View>
     </Screen>
@@ -51,5 +45,4 @@ export default function Welcome() {
 const styles = StyleSheet.create({
   body: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: Spacing.xxl },
   copy: { alignItems: 'center' },
-  sub: { marginTop: Spacing.lg, maxWidth: 380 },
 });
