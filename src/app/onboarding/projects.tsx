@@ -10,7 +10,7 @@ import { Screen } from '@/components/ui/screen';
 import { AppText } from '@/components/ui/text';
 import { TopBar } from '@/components/ui/top-bar';
 import { Spacing } from '@/constants/theme';
-import { projectsByCategories } from '@/data/projects';
+import { suggestedProjects } from '@/data/projects';
 import { euro } from '@/lib/format';
 import { useTr } from '@/hooks/use-language';
 import { useTheme } from '@/hooks/use-theme';
@@ -24,7 +24,7 @@ export default function ChooseProjects() {
   const [selected, setSelected] = useState<string[]>([]);
 
   const list = useMemo(
-    () => projectsByCategories(state.topThemes, state.scope),
+    () => suggestedProjects(state.topThemes, state.scope),
     [state.topThemes, state.scope]
   );
 

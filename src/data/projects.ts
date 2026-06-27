@@ -1387,6 +1387,44 @@ export function projectsByCategories(keys: string[], scope?: Scope | null): Proj
   return [...PROJECTS].sort((a, b) => rank(a) - rank(b));
 }
 
+/**
+ * Kuratierte, bewusst KURZE Vorschlagsliste direkt nach dem Quiz. Anders als
+ * projectsByCategories (zeigt für „Entdecken" den ganzen Katalog, nur sortiert)
+ * liefert dies nur eine Handvoll Projekte:
+ *  - ausschließlich aus den gewählten Themen,
+ *  - pro Thema 2 bis 3 Projekte, abwechselnd eingereiht, sodass JEDES gewählte
+ *    Thema sichtbar vertreten ist (wer Sport wählt, sieht Sport-Projekte, nicht
+ *    nur Umwelt), und das jeweils erste Projekt jedes Themas oben steht,
+ *  - Projekte der bevorzugten Reichweite je Thema zuerst,
+ *  - insgesamt höchstens 6, damit die Aktionen darunter (eigenen Impact-Fonds
+ *    starten / mit einer Beraterin sprechen) ohne langes Scrollen sichtbar sind.
+ */
+export function suggestedProjects(keys: string[], scope?: Scope | null): Project[] {
+  const themes = keys.length ? keys : ['bildung', 'umwelt'];
+  // Bei wenigen Themen je 3, bei dreien je 2 Projekte: Gesamtzahl bleibt bei ~6.
+  const perTheme = themes.length <= 2 ? 3 : 2;
+
+  const pickForTheme = (cat: string) =>
+    PROJECTS.filter((p) => p.category === cat)
+      .sort((a, b) => {
+        const sa = scope ? (a.scope === scope ? 0 : 1) : 0;
+        const sb = scope ? (b.scope === scope ? 0 : 1) : 0;
+        return sa - sb;
+      })
+      .slice(0, perTheme);
+
+  const byTheme = themes.map(pickForTheme);
+
+  // Abwechselnd einreihen: Thema A #1, Thema B #1, ..., dann Thema A #2, ...
+  const out: Project[] = [];
+  for (let i = 0; i < perTheme; i++) {
+    for (const list of byTheme) {
+      if (list[i]) out.push(list[i]);
+    }
+  }
+  return out;
+}
+
 export function filterProjects(category: string, scope: Scope | 'alle'): Project[] {
   return PROJECTS.filter(
     (p) => p.category === category && (scope === 'alle' || p.scope === scope)
