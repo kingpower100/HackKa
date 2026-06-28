@@ -56,11 +56,13 @@ Never commit API keys, secrets, tokens, or private service credentials.
 Import the GitHub repository in Vercel and use these settings:
 
 - Framework Preset: `Vite`
+- Root Directory: repository root
+- Node.js Version: `22.x`
 - Install Command: `npm install`
 - Build Command: `npm run build`
 - Output Directory: `dist`
 
-The included `vercel.json` pins the same install/build/output settings and adds a rewrite fallback for client-side routes.
+The included `vercel.json` pins the same install/build/output settings and adds a rewrite fallback for direct visits to client-side routes.
 
 ## Notes
 
