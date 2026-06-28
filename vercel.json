@@ -1,10 +1,12 @@
 {
+  "framework": "vite",
   "installCommand": "npm install",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/((?!_expo/|assets/|favicon.ico|.*\\..*).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
