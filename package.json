@@ -37,11 +37,14 @@
     "typescript": "~5.9.2"
   },
   "scripts": {
-    "start": "expo start",
+    "start": "node ./scripts/expo-offline.js start",
+    "dev": "node ./scripts/expo-offline.js start --web",
+    "build": "node ./scripts/expo-offline.js export --platform web --output-dir dist",
+    "preview": "node ./serve-dist.js",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
+    "web": "node ./scripts/expo-offline.js start --web",
     "lint": "expo lint"
   },
   "private": true
